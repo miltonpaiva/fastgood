@@ -5,25 +5,25 @@
  */
 class IncludeController
 {
-	private $projectName;
+	private $projectPath;
 	private $urlWeb;
 	private $paths = array();
 	
 	function __construct()
 	{
-		global $project_name;
+		global $project_path;
 
-		$this->projectName 			= 	$project_name;
+		$this->projectPath 			= 	$project_path;
 
-		$this->urlWeb 				= 	"{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}/{$this->projectName}";
+		$this->urlWeb 				= 	"{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$this->projectPath}";
 
 		$this->paths['absolut'] 	= 	$_SERVER['DOCUMENT_ROOT'];
-		$this->paths['css'] 		= 	$this->urlWeb . '/app/assets/css/';
-		$this->paths['js'] 			= 	$this->urlWeb . '/app/assets/js/';
-		$this->paths['adicional'] 	= 	$this->urlWeb . '/app/assets/adicional/';
-		$this->paths['img'] 		= 	$this->urlWeb . '/app/assets/img/';
-		$this->paths['pages'] 		= 	"{$this->paths['absolut']}/{$this->projectName}/app/view/";
-		$this->paths['parts'] 		= 	"{$this->paths['absolut']}/{$this->projectName}/includes/parts/";
+		$this->paths['css'] 		= 	$this->urlWeb . 'app/assets/css/';
+		$this->paths['js'] 			= 	$this->urlWeb . 'app/assets/js/';
+		$this->paths['adicional'] 	= 	$this->urlWeb . 'app/assets/adicional/';
+		$this->paths['img'] 		= 	$this->urlWeb . 'app/assets/img/';
+		$this->paths['pages'] 		= 	"{$this->paths['absolut']}{$this->projectPath}app/view/";
+		$this->paths['parts'] 		= 	"{$this->paths['absolut']}{$this->projectPath}includes/parts/";
 	}
 
 	public function page($path_info = '')
@@ -45,10 +45,10 @@ class IncludeController
 	{
 		switch ($type) {
 			case 'css':
-				$tag = "<link href='{$this->paths['css']}{$file}' rel='stylesheet'>";
+				$tag = "<link href='{$this->paths['css']}{$file}' rel='stylesheet'> \n";
 				break;
 			case 'js':
-				$tag = "<script type='text/javascript' src='{$this->paths['js']}{$file}'></script>";
+				$tag = "<script type='text/javascript' src='{$this->paths['js']}{$file}'></script> \n";
 				break;
 		}
 		echo $tag;

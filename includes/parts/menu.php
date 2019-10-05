@@ -1,6 +1,8 @@
 <?php 
 
   global $project_name;
+  global $project_path;
+
   $menu_classe = array();
   if (strpos($_SERVER['REQUEST_URI'], 'home')) {
     $menu_classe[0] = 'active';
@@ -15,10 +17,10 @@
 <div class="header clearfix">
   <nav>
     <ul class="nav nav-pills pull-right">
-      <li role="presentation" class="<?=@$menu_classe[0];?>"><a href="home">Home</a></li>
-      <li role="presentation" class="<?=@$menu_classe[1];?>"><a href="contas">Contas</a></li>
-      <li role="presentation" class="<?=@$menu_classe[2];?>"><a href="produtos">Produtos</a></li>
-      <li role="presentation" class="<?=@$menu_classe[3];?>"><a href="usuarios">Usuarios</a></li>
+      <li role="presentation" class="<?=@$menu_classe[0];?>"><a href="<?=$project_path;?>home">Home</a></li>
+      <li role="presentation" class="<?=@$menu_classe[1];?>"><a href="<?=$project_path;?>contas">Contas</a></li>
+      <li role="presentation" class="<?=@$menu_classe[2];?>"><a href="<?=$project_path;?>produtos">Produtos</a></li>
+      <li role="presentation" class="<?=@$menu_classe[3];?>"><a href="<?=$project_path;?>usuarios">Usuarios</a></li>
     </ul>
   </nav>
   <h3 class="text-muted"><?=$project_name;?></h3>

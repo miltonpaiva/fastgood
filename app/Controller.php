@@ -1,7 +1,7 @@
 <?php 
 
-	global $project_name;
-	require_once $_SERVER['DOCUMENT_ROOT'] . "/{$project_name}/app/controller/IncludeController.php";
+	global $project_path;
+	require_once $_SERVER['DOCUMENT_ROOT'] . "{$project_path}app/controller/IncludeController.php";
 
 /**
  * Controller
@@ -14,12 +14,12 @@ class Controller
 	function __construct()
 	{
 		$this->include = new IncludeController();
-		$this->DB = Database::conexao();
+		$this->DB = Database::conexao(); 
 	}
 
-	public function includePage($pathinfo = '')
+	public function includePage($path_info)
 	{
-		$this->include->Page(@$pathinfo[1]);
+		$this->include->Page($path_info);
 	}
 
 	public function includeArchive($file, $type)
