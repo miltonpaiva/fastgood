@@ -13,9 +13,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
-  <?php $inc->includeArchive('bootstrap.min.css','css'); ?>
-  <?php $inc->includeArchive('bootstrap.min.js','js'); ?>
+  <?php $inc->includeArchive('bootstrap.min.css'); ?>
+  <?php $inc->includeArchive('bootstrap.min.js'); ?>
 
-  <?php $inc->includeArchive('style.css','css'); ?>
+  <?php $inc->includeArchive('style.css'); ?>
 
 </head>

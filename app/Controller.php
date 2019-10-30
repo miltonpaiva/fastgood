@@ -10,11 +10,11 @@ class Controller
 {
 	public $include;
 	public $DB;
-	
+
 	function __construct()
 	{
 		$this->include = new IncludeController();
-		$this->DB = Database::conexao(); 
+		$this->DB = Database::conexao();
 	}
 
 	public function includePage($path_info)
@@ -22,9 +22,9 @@ class Controller
 		$this->include->Page($path_info);
 	}
 
-	public function includeArchive($file, $type)
+	public function includeArchive($file)
 	{
-		$this->include->Archive($file, $type);
+		$this->include->Archive($file);
 	}
 
 	public function includeParts($file)

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * IncludeController
@@ -8,7 +8,7 @@ class IncludeController
 	private $projectPath;
 	private $urlWeb;
 	private $paths = array();
-	
+
 	function __construct()
 	{
 		global $project_path;
@@ -27,7 +27,7 @@ class IncludeController
 	}
 
 	public function page($path_info = '')
-	{	
+	{
 		$page = $this->montPath($path_info);
 		include $page;
 	}
@@ -41,7 +41,19 @@ class IncludeController
 		}
 	}
 
-	public function archive($file, $type)
+	public function archive($file)
+	{
+		if (strpos($file, 'css')) {
+			$tag = "<link href='{$this->paths['css']}{$file}' rel='stylesheet'> \n";
+		}
+		if (strpos($file, 'js')) {
+			$tag = "<script type='text/javascript' src='{$this->paths['js']}{$file}'></script> \n";
+		}
+
+		echo $tag;
+	}
+
+	public function img($file)
 	{
 		switch ($type) {
 			case 'css':
