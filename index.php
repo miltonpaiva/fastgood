@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 	$project_path = current(explode('index.php', $_SERVER['SCRIPT_NAME']));
 	$project_name = 'Fast GOOD';

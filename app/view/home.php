@@ -10,21 +10,6 @@
 <div class="container">
 
   <?php  $inc->includeParts("menu"); ?>
-  <?php
-    if (isset($_GET['msg'])) {
-      $msg = $_GET['msg'];
-      switch ($msg) {
-        case 2:
-  ?>
-          <div class="alert alert-success" role="alert" style="height:relative;width:690px;left: 325px;margin-top:-5px;text-align:center;">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-            Você foi autenticado com sucesso!
-          </div>
-  <?php
-      }
-    }
-  ?> 
 
   <div class="row marketing" style="border: 1px solid rgb(225, 232, 237); border-radius: 4px; ">
     <div class="col-lg-10">
@@ -49,16 +34,16 @@
       ?>
         <tbody>
           <td>
-            <?php echo "<p></p>", @$row['forCategoria'] ?>
+            <?php echo @$row['forCategoria'] ?>
           </td>
           <td>
-            <?php echo "<p></p>", @$row['nome'] ?>
+            <?php echo @$row['nome'] ?>
           </td>
           <td class="img-circle">
             <img src="<?php echo @$row['img'] ?>" class="img-thumbnail" style="width:70px;height:70px;">
           </td>
           <td>
-            <?php echo "<p></p>R$", @$row['valor'] ?>
+            <?php echo "R$", @$row['valor'] ?>
           </td>
         </tbody>
         <?php 

@@ -1,9 +1,9 @@
-<?php 
+<?php
   $inc = new Controller();
   $inc->includeParts("header");
 
   $pdo = $inc->DB;
-  
+
 ?>
 
 <body>
@@ -11,7 +11,7 @@
   <?php  $inc->includeParts("menu"); ?>
 
   <!-- Button trigger modal -->
-  <a href="add_conta.php">
+  <a href="conta">
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
       Registrar Nova Conta
     </button>
@@ -32,7 +32,7 @@
   <?php
       }
     }
-  ?> 
+  ?>
   <?php
   if (isset($_GET['msg'])) {
     $msg = $_GET['msg'];
@@ -47,7 +47,7 @@
   <?php
       }
     }
-  ?> 
+  ?>
   <?php
   if (isset($_GET['msg'])) {
     $msg = $_GET['msg'];
@@ -62,7 +62,7 @@
   <?php
       }
     }
-  ?> 
+  ?>
 
 <div class="row marketing" style=" border: 1px solid rgb(225, 232, 237); border-radius: 4px; ">
   <h4 class="text-center">Lista de Contas Cadastradas</h4>
@@ -79,18 +79,18 @@
             <td style="font-weight:bold;">Valor</td>
             <td style="font-weight:bold;">Alterar</td>
             <td style="font-weight:bold;">Excluir</td>
-    		    <td style="font-weight:bold;">imprimir</td>
+            <td style="font-weight:bold;">imprimir</td>
           </tr>
         </thead>
         <tbody>
-        <?php 
+        <?php
           $result = $pdo->query("SELECT * FROM tab_conta ORDER BY dtAbertura desc");
           $contas = $result->fetchAll();
           if ($contas) {
             foreach ($contas as $row) {
               if ($row['status']) {$status = 'Aberta';$classe = 'success';}else{$status = 'Encerrada';$classe = 'danger';}
         ?>
-          
+
               <tr class="<?=$classe;?>">
                 <td>
                   <?php echo "<p>{$status}</p>"; ?>
@@ -114,17 +114,17 @@
                 </td>
                 <td>
                   <form action="includes/functions/excluir_conta.php?id_conta=<?php echo $row['id_conta']; ?>" method="POST">
-              	<input type="submit" value="Excluir" name="Submit" class='btn btn-sm btn-danger'> 
+                <input type="submit" value="Excluir" name="Submit" class='btn btn-sm btn-danger'> 
                   </form>
                 </td>
                 <td>
                   <form action="imprimir.php?id_conta=<?php echo $row['id_conta']; ?>" method="POST">
                    <input type="submit" value="Sim" name="Submit" class='btn btn-sm btn-danger'> 
                   </form>
-              	
+
                 </td>
               </tr>
-        <?php 
+        <?php
             }
           }
         ?>
@@ -135,6 +135,6 @@
 </div>
 
   <!-- fim da classe container -->
-<?php 
+<?php
   $inc->includeParts("footer");
 ?>
