@@ -31,6 +31,11 @@ class Controller
 	{
 		$this->include->parts($file);
 	}
+
+	public function includeImg($file)
+	{
+		$this->include->img($file);
+	}
 }
 
 ?>

@@ -40,7 +40,7 @@
             <?php echo @$row['nome'] ?>
           </td>
           <td class="img-circle">
-            <img src="<?php echo @$row['img'] ?>" class="img-thumbnail" style="width:70px;height:70px;">
+            <img src="<?php $inc->includeImg($row['img']); ?>" class="img-thumbnail" style="width:70px;height:70px;">
           </td>
           <td>
             <?php echo "R$", @$row['valor'] ?>

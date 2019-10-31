@@ -55,15 +55,7 @@ class IncludeController
 
 	public function img($file)
 	{
-		switch ($type) {
-			case 'css':
-				$tag = "<link href='{$this->paths['css']}{$file}' rel='stylesheet'> \n";
-				break;
-			case 'js':
-				$tag = "<script type='text/javascript' src='{$this->paths['js']}{$file}'></script> \n";
-				break;
-		}
-		echo $tag;
+		echo "{$this->paths['img']}{$file}";
 	}
 
 	public function parts($file)
