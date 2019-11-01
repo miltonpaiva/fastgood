@@ -23,22 +23,22 @@
         </div>
 
         <div class="modal-body">
-          <form action="processadados.php?go=cadastrarp" enctype="multipart/form-data" method="post" class="form-group">
-            Nome:
+          <form action="" enctype="multipart/form-data" method="post" class="form-group">
+            <label for="formGroupExampleInput">Nome:</label>
         		<div class="form-group">
         		  <input type="text" name="pro_nome" class="form-control"  required >
             </div>
-            Imagen Produto:
+            <label for="formGroupExampleInput">Imagen Produto:</label>
             <div class="form-group">
               <span class="btn btn-default btn-file">
-                Procurar <input type="file" name="pro_foto" class="form-control" >
+                <label for="formGroupExampleInput">Procurar</label> <input type="file" name="pro_foto" class="form-control" >
               </span>
             </div>
-            Valor:
+            <label for="formGroupExampleInput">Valor:</label>
         		<div class="form-group">
-        		  <input type="text" name="valor" onKeyPress="return(MascaraMoeda(this,'.',',',event))" class="form-control"  required>
+        		  <input type="number" name="valor" onKeyPress="" class="form-control" placeholder="R$: 0,00" min="0" step="0.10" required>
             </div>
-            Categoria:
+            <label for="formGroupExampleInput">Categoria:</label>
             <div class="form-group">
           		<select name="categoria" class="form-control" >
           			<option>Hamburgues</option>
