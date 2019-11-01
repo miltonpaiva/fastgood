@@ -36,6 +36,11 @@ class Controller
 	{
 		$this->include->img($file);
 	}
+
+	public function includeModel($route)
+	{
+		$this->include->models($route);
+	}
 }
 
 ?>

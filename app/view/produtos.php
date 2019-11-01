@@ -1,9 +1,7 @@
-<?php 
+<?php
   $inc = new Controller();
   $inc->includeParts("header");
-
   $pdo = $inc->DB;
-  
 ?>
 <body>
 <div class="container">
@@ -54,109 +52,20 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-success">Cadastrar</button>
-        </div> 
+        </div>
       </div>
     </div>
   </div>
   <!-- /Modal -->
 
-  <?php
-  if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    switch ($msg) {
-      case 1:
-  ?>
-        <div class="alert alert-success" role="alert" style="height:relative;width:690px;left:325px;margin-top:10px;text-align:center;">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          Produto Cadastrado com sucesso!
-        </div>
-  <?php
-      }
-    }
-  ?> 
-  <?php
-  if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    switch ($msg) {
-      case 2:
-  ?>
-        <div class="alert alert-info" role="alert" style="height:relative;width:690px;left:325px;margin-top:10px;text-align:center;">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-          Produto alterado com sucesso!
-        </div>
-  <?php
-      }
-    }
-  ?> 
-  <?php
-  if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    switch ($msg) {
-      case 3:
-  ?>
-        <div class="alert alert-danger" role="alert" style="height:relative;width:690px;left:325px;margin-top:10px;text-align:center;">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          Produto excluido com sucesso!
-        </div>
-  <?php
-      }
-    }
-  ?> 
+  <!-- LISTAGEM -->
   <div class="row marketing" style="border: 1px solid rgb(225, 232, 237); border-radius: 4px; ">
     <h4 class="text-center">Lista de Produtos Cadastrados</h4>
     <div class="col-lg-10">
-    	<table class="table" style="margin-top:10px;margin-left:55px;">
-        <thead>
-          <tr>
-            <td style="font-weight:bold;">ID</td>
-            <td style="font-weight:bold;">Nome do Protudo</td>
-            <td style="font-weight:bold;">Valor</td>
-            <td style="font-weight:bold;">Categoria</td>
-            <td style="font-weight:bold;">Alterar</td>
-            <td style="font-weight:bold;">Excluir</td>
-          </tr>
-        </thead>
-        <?php 
-          // $result = $pdo->query("SELECT * FROM tab_produtos ORDER BY valor DESC");
-          // $produtos = $result->fetchAll();
-
-          // if ($produtos) {
-          //   foreach ($produtos as $row) {
-        ?>
-            <tbody>
-              <td>
-                <?php echo "<p></p>", @$row['codProd'] ?>
-              </td>
-              <td>
-                <?php echo "<p></p>", @$row['nome'] ?>
-              </td>
-              <td>
-                <?php echo "<p></p>R$", @$row['valor'] ?>
-              </td>
-              <td>
-                <?php echo "<p></p>", @$row['forCategoria'] ?>
-              </td>
-              <td>
-                <form action="alterar_produto.php?pro_id=<?php echo $row['pro_id'];?>" method="POST">
-                  <input type="submit" value="Alterar" name="Submit" class='btn btn-sm btn-primary'>
-                </form>
-              </td>
-              <td>
-                <form action="includes/functions/excluir_produtos.php?pro_id=<?php echo $row['pro_id']; ?>" method="POST">
-                  <input type="submit" value="Excluir" name="Submit" class='btn btn-sm btn-danger'>
-                </form>
-              </td>
-            </tbody>
-        <?php 
-          //   }
-          // }
-        ?>
-      </table>
+      <?php $inc->includeModel('produtos/listagem'); ?>
   	</div>
   </div>
+  <!-- /LISTAGEM -->
 
 <?php 
   $inc->includeParts("footer");
