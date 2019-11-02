@@ -1,7 +1,6 @@
 <?php
   $inc = new Controller();
   $inc->includeParts("header");
-
   $pdo = $inc->DB;
 
 ?>
@@ -16,53 +15,6 @@
       Registrar Nova Conta
     </button>
   </a>
-
-
-  <?php
-  if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    switch ($msg) {
-      case 1:
-  ?>
-        <div class="alert alert-success" role="alert" style="height:relative;width:690px;left:325px;margin-top:10px;text-align:center;">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-          Mesa Adicionada com sucesso!
-        </div>
-  <?php
-      }
-    }
-  ?>
-  <?php
-  if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    switch ($msg) {
-      case 2:
-  ?>
-      <div class="alert alert-info" role="alert" style="height:relative;width:690px;left:325px;margin-top:10px;text-align:center;">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-        Mesa alterada com sucesso!
-      </div>
-  <?php
-      }
-    }
-  ?>
-  <?php
-  if (isset($_GET['msg'])) {
-    $msg = $_GET['msg'];
-    switch ($msg) {
-      case 3:
-  ?>
-        <div class="alert alert-danger" role="alert" style="height:relative;width:690px;left:325px;margin-top:10px;text-align:center;">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          Mesa excluida com sucesso!
-        </div>
-  <?php
-      }
-    }
-  ?>
 
 <div class="row marketing" style=" border: 1px solid rgb(225, 232, 237); border-radius: 4px; ">
   <h4 class="text-center">Lista de Contas Cadastradas</h4>
