@@ -11,38 +11,53 @@
        </thead>
        <?php
          global $pdo;
-         $result = $pdo->query("SELECT * FROM tab_produtos ORDER BY valor DESC");
+
+         $sql = "
+                  SELECT
+                    tab_produtos.codProd,
+                    tab_produtos.nome,
+                    tab_produtos.valor,
+                    tab_categorias.nome as catNome
+                  FROM
+                    tab_produtos
+                  inner join
+                    tab_categorias
+                    on  tab_produtos.forCategoria =
+                        tab_categorias.codCat
+                  ORDER BY valor DESC";
+
+         $result = $pdo->query($sql);
          $produtos = $result->fetchAll();
 
-         if ($produtos) {
-           foreach ($produtos as $row) {
+         if ($produtos):
+           foreach ($produtos as $produto):
        ?>
            <tbody>
              <td>
-               <?php echo "<p></p>", @$row['codProd'] ?>
+               <?php echo "<p></p>", @$produto['codProd'] ?>
              </td>
              <td>
-               <?php echo "<p></p>", @$row['nome'] ?>
+               <?php echo "<p></p>", @$produto['nome'] ?>
              </td>
              <td>
-               <?php echo "<p></p>R$", @$row['valor'] ?>
+               <?php echo "<p></p>R$", @$produto['valor'] ?>
              </td>
              <td>
-               <?php echo "<p></p>", @$row['forCategoria'] ?>
+               <?php echo "<p></p>", @$produto['catNome'] ?>
              </td>
              <td>
-               <form action="alterar_produto.php?pro_id=<?php echo $row['pro_id'];?>" method="POST">
+               <form action="alterar_produto.php?pro_id=<?php echo $produto['pro_id'];?>" method="POST">
                  <input type="submit" value="Alterar" name="Submit" class='btn btn-sm btn-primary'>
                </form>
              </td>
              <td>
-               <form action="includes/functions/excluir_produtos.php?pro_id=<?php echo $row['pro_id']; ?>" method="POST">
+               <form action="includes/functions/excluir_produtos.php?pro_id=<?php echo $produto['pro_id']; ?>" method="POST">
                  <input type="submit" value="Excluir" name="Submit" class='btn btn-sm btn-danger'>
                </form>
              </td>
            </tbody>
        <?php
-           }
-         }
+            endforeach;
+          endif;
        ?>
      </table>
