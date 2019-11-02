@@ -10,8 +10,12 @@
 
 	$inc = new Controller();
 
-	$path_info = '';
+	$path_info = explode('/', $_SERVER['PATH_INFO']);
 
-	if (isset($_SERVER['PATH_INFO'])) {$path_info = explode('/', $_SERVER['PATH_INFO'])[1];}
-	$inc->includePage($path_info);
+	if (isset($path_info[1])){
+		$page = $path_info[1];
+	}elseif(isset($path_info[2])){
+		$action = $path_info[2];
+	}
+	$inc->includePage($page);
 ?>
