@@ -40,12 +40,7 @@
             </div>
             <label for="formGroupExampleInput">Categoria:</label>
             <div class="form-group">
-          		<select name="categoria" class="form-control" >
-          			<option>Hamburgues</option>
-                <option>Saladas</option>
-                <option>Bebidas</option>
-                <option>Sobremesa</option>
-          		</select>
+              <?php $inc->includeModel('categorias/select'); ?>
             </div>
           </form>
         </div>
