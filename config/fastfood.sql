@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 31-Out-2019 às 20:17
+-- Generation Time: 02-Nov-2019 às 22:13
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 5.6.35
 
@@ -32,6 +32,15 @@ CREATE TABLE `tab_categorias` (
   `codCat` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `tab_categorias`
+--
+
+INSERT INTO `tab_categorias` (`codCat`, `nome`) VALUES
+(1, 'Hamburguers'),
+(2, 'Saladas'),
+(3, 'Bebidas');
 
 -- --------------------------------------------------------
 
@@ -80,7 +89,7 @@ CREATE TABLE `tab_produtos` (
   `nome` varchar(30) NOT NULL,
   `img` varchar(50) NOT NULL,
   `valor` decimal(10,2) NOT NULL,
-  `forCategoria` varchar(250) NOT NULL,
+  `forCategoria` int(11) NOT NULL,
   `data` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -89,12 +98,12 @@ CREATE TABLE `tab_produtos` (
 --
 
 INSERT INTO `tab_produtos` (`codProd`, `nome`, `img`, `valor`, `forCategoria`, `data`) VALUES
-(17, 'Big Mac', '1494798814.jpg', '27.00', 'Hamburgues', '2017-05-14'),
-(18, 'Carne e Queijo', '1494798878.jpg', '33.00', 'Hamburgues', '2017-05-14'),
-(19, 'Frango Ranch', '1494799011.jpg', '22.00', 'Saladas', '2017-05-14'),
-(20, 'Coca Cola', '1494799080.jpg', '3.00', 'Bebidas', '2017-05-14'),
-(21, 'Pepsi', '1494799135.jpg', '3.20', 'Bebidas', '2017-05-14'),
-(25, 'Salada de Frango', '1495160853.jpg', '19.00', 'Saladas', '2017-05-18');
+(17, 'Big Mac', '1494798814.jpg', '27.00', 1, '2017-05-14'),
+(18, 'Carne e Queijo', '1494798878.jpg', '33.00', 1, '2017-05-14'),
+(19, 'Frango Ranch', '1494799011.jpg', '22.00', 2, '2017-05-14'),
+(20, 'Coca Cola', '1494799080.jpg', '3.00', 3, '2017-05-14'),
+(21, 'Pepsi', '1494799135.jpg', '3.20', 3, '2017-05-14'),
+(25, 'Salada de Frango', '1495160853.jpg', '19.00', 2, '2017-05-18');
 
 -- --------------------------------------------------------
 
@@ -167,7 +176,7 @@ ALTER TABLE `tab_usuario`
 -- AUTO_INCREMENT for table `tab_categorias`
 --
 ALTER TABLE `tab_categorias`
-  MODIFY `codCat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `codCat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tab_conta`
