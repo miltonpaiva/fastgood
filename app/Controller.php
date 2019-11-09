@@ -17,9 +17,9 @@ class Controller
 		$this->DB = Database::conexao();
 	}
 
-	public function includePage($path_info)
+	public function includePage($entity = '')
 	{
-		$this->include->Page($path_info);
+		$this->include->Page($entity);
 	}
 
 	public function includeArchive($file)

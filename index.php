@@ -10,12 +10,27 @@
 
 	$inc = new Controller();
 
-	$path_info = explode('/', $_SERVER['PATH_INFO']);
-
-	if (isset($path_info[1])){
-		$page = $path_info[1];
-	}elseif(isset($path_info[2])){
-		$action = $path_info[2];
+	function formatPath($path_info)
+	{
+		$data = explode('/', $path_info);
+		foreach ($data as $key => $path) {
+			if ($path == "") {
+				unset($data[$key]);
+			}
+		}
+		return $data;
 	}
-	$inc->includePage($page);
+
+	$path_info = formatPath(@$_SERVER['PATH_INFO']);
+
+	if (count($path_info) == 1){
+		$entity = $path_info[1];
+		$inc->includePage($entity);
+	}elseif(count($path_info) == 2){
+		$action = implode('/', $path_info);
+		$inc->includeModel($action);
+	}else{
+		$inc->includePage();
+	}
+
 ?>

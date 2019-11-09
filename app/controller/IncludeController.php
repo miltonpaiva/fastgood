@@ -27,9 +27,9 @@ class IncludeController
 		$this->paths['parts'] 		= 	"{$this->paths['absolut']}{$this->projectPath}includes/parts/";
 	}
 
-	public function page($path_info = '')
+	public function page($entity = 'login')
 	{
-		$page = $this->montPath($path_info);
+		$page = $this->montPath($entity);
 		include $page;
 	}
 
