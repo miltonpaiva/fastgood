@@ -2,6 +2,7 @@
 
 	global $project_path;
 	require_once $_SERVER['DOCUMENT_ROOT'] . "{$project_path}app/controller/IncludeController.php";
+	require_once $_SERVER['DOCUMENT_ROOT'] . "{$project_path}app/controller/IncludeController.php";
 
 /**
  * Controller
@@ -13,8 +14,9 @@ class Controller
 
 	function __construct()
 	{
+		global $pdo;
 		$this->include = new IncludeController();
-		$this->DB = Database::conexao();
+		$this->DB = $pdo;
 	}
 
 	public function includePage($entity = '')

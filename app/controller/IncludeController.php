@@ -11,20 +11,11 @@ class IncludeController
 
 	function __construct()
 	{
-		global $project_path;
+		global $project_path, $url_web, $include_paths;
 
-		$this->projectPath 			= 	$project_path;
-
-		$this->urlWeb 				= 	"{$_SERVER['REQUEST_SCHEME']}://{$_SERVER['HTTP_HOST']}{$this->projectPath}";
-
-		$this->paths['absolut'] 	= 	$_SERVER['DOCUMENT_ROOT'];
-		$this->paths['css'] 		= 	"{$this->urlWeb}app/assets/css/";
-		$this->paths['js'] 			= 	"{$this->urlWeb}app/assets/js/";
-		$this->paths['adicional'] 	= 	"{$this->urlWeb}app/assets/adicional/";
-		$this->paths['img'] 		= 	"{$this->urlWeb}app/assets/img/";
-		$this->paths['models'] 		= 	"{$this->paths['absolut']}{$this->projectPath}app/model/";
-		$this->paths['pages'] 		= 	"{$this->paths['absolut']}{$this->projectPath}app/view/";
-		$this->paths['parts'] 		= 	"{$this->paths['absolut']}{$this->projectPath}includes/parts/";
+		$this->projectPath 	= $project_path;
+		$this->urlWeb 		= $url_web;
+		$this->paths 		= $include_paths;
 	}
 
 	public function page($entity = 'login')
